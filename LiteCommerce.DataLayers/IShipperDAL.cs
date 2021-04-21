@@ -50,7 +50,7 @@ namespace LiteCommerce.DataLayers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        bool Update(Shipper data);
+        bool Update(int shipperID, Shipper data);
         /// <summary>
         /// Xóa một nhà vận chuyển dựa vào mã. Hàm trả về boolean cho biết
         /// việc xóa có thành công hay không (Lưu ý: Không được xóa nhà vận chuyển nếu đang có mặt hàng tham chiếu đến nhà vận chuyển

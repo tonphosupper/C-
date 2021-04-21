@@ -22,7 +22,7 @@ namespace LiteCommerce.DomainModels
         /// <summary>
         /// 
         /// </summary>
-        public string FirtsName { get; set; }
+        public string FirstName { get; set; }
         /// <summary>
         /// 
         /// </summary>

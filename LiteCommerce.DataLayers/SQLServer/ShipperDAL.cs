@@ -29,7 +29,30 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// <returns></returns>
         public int Add(Shipper data)
         {
-            throw new NotImplementedException();
+            int shipperID = 0;
+
+            using (SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @" INSERT INTO Shippers (
+                                                            ShipperName,
+                                                            Phone
+                                                            )
+                                     VALUES (
+                                                            @ShipperName,
+                                                            @Phone
+                                                            );
+                                     SELECT @@IDENTITY;
+                                    ";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@ShipperName", data.ShipperName);
+                cmd.Parameters.AddWithValue("@Phone", data.Phone);
+                shipperID = Convert.ToInt32(cmd.ExecuteScalar());
+
+                cn.Close();
+            }
+
+            return shipperID;
         }
         /// <summary>
         /// 
@@ -38,7 +61,28 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// <returns></returns>
         public int Count(string searchValue)
         {
-            throw new NotImplementedException();
+            if (searchValue != "")
+                searchValue = "%" + searchValue + "%";
+            int result = 0;
+
+            using (SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"SELECT COUNT(*) FROM Shippers
+                                    WHERE (@SearchValue = '')
+                                       OR (
+                                                ShipperName LIKE @searchValue 
+                                            OR  Phone LIKE @searchValue 
+                                   ";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@searchValues", searchValue);
+
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+
+                cn.Close();
+            }
+
+            return result;
         }
         /// <summary>
         /// 
@@ -47,7 +91,25 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// <returns></returns>
         public bool Delete(int shipperID)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            using (SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @" DELETE FROM Shippers
+                                     WHERE ShipperID = @shipperID
+                                        AND NOT EXISTS (SELECT * FROM Orders WHERE ShipperID = Shippers.ShipperID)
+                                    ";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@shipperID", shipperID);
+
+                result = cmd.ExecuteNonQuery() > 0;
+
+                cn.Close();
+            }
+
+            return result;
         }
         /// <summary>
         /// 
@@ -56,7 +118,32 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// <returns></returns>
         public Shipper Get(int shipperID)
         {
-            throw new NotImplementedException();
+            Shipper data = null;
+
+            using (SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @" SELECT * FROM Shippers WHERE ShipperID = @shipperID
+                                    ";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@shipperID", shipperID);
+
+                using (SqlDataReader dbReader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    if (dbReader.Read())
+                    {
+                        data = new Shipper()
+                        {
+                            ShipperID = Convert.ToInt32(dbReader["ShipperID"]),
+                            ShipperName = Convert.ToString(dbReader["ShipperName"]),
+                            Phone = Convert.ToString(dbReader["Phone"])
+                        };
+                    }
+                }
+                cn.Close();
+            }
+
+            return data;
         }
         /// <summary>
         /// 
@@ -120,9 +207,29 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public bool Update(Shipper data)
+        public bool Update(int shipperID, Shipper data)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+
+            using (SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @" UPDATE Shippers
+                                     SET    ShipperName = @ShipperName,
+                                            Phone = @Phone
+                                     WHERE ShipperID = @shipperID;
+                                    ";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@shipperID", shipperID);
+
+                cmd.Parameters.AddWithValue("@ShipperName", data.ShipperName);
+                cmd.Parameters.AddWithValue("@Phone", data.Phone);
+
+                result = cmd.ExecuteNonQuery() > 0;
+            }
+
+            return result;
         }
     }
 }

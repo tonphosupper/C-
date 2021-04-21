@@ -50,7 +50,7 @@ namespace LiteCommerce.DataLayers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        bool Update(Customer data);
+        bool Update(int customerID, Customer data);
         /// <summary>
         /// Xóa một khách hàng dựa vào mã. Hàm trả về boolean cho biết
         /// việc xóa có thành công hay không (Lưu ý: Không được xóa khách hàng nếu đang có mặt hàng tham chiếu đến khách hàng

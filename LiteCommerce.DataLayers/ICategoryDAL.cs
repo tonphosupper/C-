@@ -41,16 +41,16 @@ namespace LiteCommerce.DataLayers
         /// <summary>
         /// Lấy thông tin của loại hàng theo mã. Trong trường hợp loại hàng không tồn tại, hàm trả về giá trị null
         /// </summary>
-        /// <param name="shipperID">Mã loại hàng cần lấy thông tin</param>
+        /// <param name="categoryID">Mã loại hàng cần lấy thông tin</param>
         /// <returns></returns>
-        Category Get(int shipperID);
+        Category Get(int categoryID);
         /// <summary>
         /// Cập nhật thông tin cảu một loại hàng. Hàm trả về boolean cho biết
         /// việc cập nhật có thành công hay không
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        bool Update(Category data);
+        bool Update(int categoryID, Category data);
         /// <summary>
         /// Xóa một loại hàng dựa vào mã. Hàm trả về boolean cho biết
         /// việc xóa có thành công hay không (Lưu ý: Không được xóa loại hàng nếu đang có mặt hàng tham chiếu đến loại hàng
