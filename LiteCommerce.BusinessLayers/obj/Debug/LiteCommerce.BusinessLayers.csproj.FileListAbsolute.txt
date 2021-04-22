@@ -9,3 +9,12 @@ D:\.Net_Web\LiteCommerce\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.Doma
 D:\.Net_Web\LiteCommerce\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.DataLayers.pdb
 D:\.Net_Web\LiteCommerce\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.DomainModels.pdb
 D:\.Net_Web\LiteCommerce\LiteCommerce.BusinessLayers\obj\Debug\LiteCommerce.BusinessLayers.csproj.CopyComplete
+D:\github\C-\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.BusinessLayers.dll
+D:\github\C-\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.BusinessLayers.pdb
+D:\github\C-\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.DataLayers.dll
+D:\github\C-\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.DomainModels.dll
+D:\github\C-\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.DataLayers.pdb
+D:\github\C-\LiteCommerce.BusinessLayers\bin\Debug\LiteCommerce.DomainModels.pdb
+D:\github\C-\LiteCommerce.BusinessLayers\obj\Debug\LiteCommerce.BusinessLayers.csprojResolveAssemblyReference.cache
+D:\github\C-\LiteCommerce.BusinessLayers\obj\Debug\LiteCommerce.BusinessLayers.dll
+D:\github\C-\LiteCommerce.BusinessLayers\obj\Debug\LiteCommerce.BusinessLayers.pdb

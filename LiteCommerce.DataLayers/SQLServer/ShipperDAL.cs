@@ -69,7 +69,7 @@ namespace LiteCommerce.DataLayers.SQLServer
             {
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"SELECT COUNT(*) FROM Shippers
-                                    WHERE (@SearchValue = '')
+                                    WHERE (@searchValue = '')
                                        OR (
                                                 ShipperName LIKE @searchValue 
                                             OR  Phone LIKE @searchValue 

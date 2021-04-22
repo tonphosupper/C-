@@ -7,3 +7,10 @@ D:\.Net_Web\LiteCommerce\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLaye
 D:\.Net_Web\LiteCommerce\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DomainModels.dll
 D:\.Net_Web\LiteCommerce\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DomainModels.pdb
 D:\.Net_Web\LiteCommerce\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLayers.csproj.CopyComplete
+D:\github\C-\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DataLayers.dll
+D:\github\C-\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DataLayers.pdb
+D:\github\C-\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DomainModels.dll
+D:\github\C-\LiteCommerce.DataLayers\bin\Debug\LiteCommerce.DomainModels.pdb
+D:\github\C-\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLayers.csprojResolveAssemblyReference.cache
+D:\github\C-\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLayers.dll
+D:\github\C-\LiteCommerce.DataLayers\obj\Debug\LiteCommerce.DataLayers.pdb

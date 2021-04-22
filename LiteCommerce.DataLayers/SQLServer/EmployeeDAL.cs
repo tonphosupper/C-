@@ -70,17 +70,83 @@ namespace LiteCommerce.DataLayers.SQLServer
 
         public int Count(string searchValue)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            using (SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"SELECT COUNT(*) FROM Employees
+                                    WHERE @searchValue = '')
+                                       OR ( LastName LIKE @searchValue
+                                            OR FirstName LIKE @searchValue
+                                            OR Email LIKE @searchValue
+                                            )     
+                                    ";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@searchValue", searchValue);
+
+                result = Convert.ToInt32(cmd.ExecuteScalar());
+
+                cn.Close();
+            }
+
+            return result;
         }
 
-        public bool Delete(int supplierID)
+        public bool Delete(int employeeID)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            using(SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"DELETE FROM Employees
+                                    WHERE EmployeeID= @employeeID
+                                        AND NOT EXISTS (SELECT * FROM Orders WHERE EmployeeID = Employees.EmployeeID)
+                                    ";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@employeeID", employeeID);
+
+                result = cmd.ExecuteNonQuery() > 0;
+                cn.Close();
+            }
+
+            return result;
         }
 
-        public Employee Get(int supplierID)
+        public Employee Get(int employeeID)
         {
-            throw new NotImplementedException();
+            Employee data = null;
+
+            using(SqlConnection cn = GetConnection())
+            {
+                SqlCommand cmd = cn.CreateCommand();
+                cmd.CommandText = @"SELECT * FROM Employees WHERE EmployeeID = @employeeID
+                                    ";
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@employeeID", employeeID);
+
+                using (SqlDataReader dbReader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    if (dbReader.Read())
+                    {
+                        data = new Employee()
+                        {
+                            EmployeeID = Convert.ToInt32(dbReader["EmployeeID"]),
+                            FirstName = Convert.ToString(dbReader["FirstName"]),
+                            LastName = Convert.ToString(dbReader["LastName"]),
+                            BirthDate = Convert.ToDateTime(dbReader["BirthDate"]),
+                            Photo = Convert.ToString(dbReader["Photo"]),
+                            Notes = Convert.ToString(dbReader["Notes"]),
+                            Email = Convert.ToString(dbReader["Email"]),
+                            Password = Convert.ToString(dbReader["Password"]),
+                        };
+                    }
+                }
+                cn.Close();
+            }
+
+            return data;
         }
 
         /// <summary>

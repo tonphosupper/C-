@@ -83,3 +83,6 @@ D:\.Net_Web\LiteCommerce\LiteCommerce.Admin\bin\LiteCommerce.DomainModels.dll
 D:\.Net_Web\LiteCommerce\LiteCommerce.Admin\bin\LiteCommerce.BusinessLayers.pdb
 D:\.Net_Web\LiteCommerce\LiteCommerce.Admin\bin\LiteCommerce.DataLayers.pdb
 D:\.Net_Web\LiteCommerce\LiteCommerce.Admin\bin\LiteCommerce.DomainModels.pdb
+D:\github\C-\LiteCommerce.Admin\obj\Debug\LiteCommerce.Admin.csprojResolveAssemblyReference.cache
+D:\github\C-\LiteCommerce.Admin\obj\Debug\LiteCommerce.Admin.dll
+D:\github\C-\LiteCommerce.Admin\obj\Debug\LiteCommerce.Admin.pdb
