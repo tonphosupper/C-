@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
 using System.Web;
@@ -29,12 +30,6 @@ namespace LiteCommerce.Admin.Controllers
             string connectionString = ConfigurationManager
                 .ConnectionStrings["LiteCommerceDB"]
                 .ConnectionString;
-
-            //ICityDAL dal = new CityDAL(connectionString);
-            //var data = dal.List(countryName);
-
-            //ISupplierDAL dal = new SupplierDAL(connectionString);
-            //var data = dal.Get(1);
 
             ISupplierDAL dal = new SupplierDAL(connectionString);
             Supplier s = new Supplier()
@@ -66,7 +61,7 @@ namespace LiteCommerce.Admin.Controllers
                 Country = "t5",
                 Phone = "t6"
             };
-            var data = dal.Update(s);
+            var data = dal.Update(30,s);
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
@@ -81,11 +76,33 @@ namespace LiteCommerce.Admin.Controllers
                 ShipperName = "KAKA",
                 Phone = "03399"
             };
-            var data = dal.Get(id);
+            var data = dal.Update(8,s);
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult Panigation(int page, int pageSize, string searchValue)
+        public ActionResult delupemp()
+        {
+            string connectionString = ConfigurationManager
+                .ConnectionStrings["LiteCommerceDB"]
+                .ConnectionString;
+            IEmployeeDAL dal = new EmployeeDAL(connectionString);
+            DateTimeConverter c = new DateTimeConverter();
+            Employee s = new Employee()
+            {
+                LastName = "PHO",
+                FirstName = "ton",
+                Photo = "kkkk",
+                BirthDate= (DateTime)c.ConvertFromString("04/03/2000"),
+                Notes = "aaaaaaa",
+                Email = "ssss",
+                Password = "vvvvvv"
+
+            };
+            var data = dal.Delete(11);
+
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Pagination(int page, int pageSize, string searchValue)
         {
             string connectionString = ConfigurationManager
                .ConnectionStrings["LiteCommerceDB"]

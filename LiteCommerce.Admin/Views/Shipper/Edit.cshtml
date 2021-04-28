@@ -1,15 +1,21 @@
-﻿
+﻿@model LiteCommerce.DomainModels.Shipper
 
 <form method="post" action="~/Shipper/Save">
+    <div class="text-danger form-group">
+        @Html.ValidationSummary()
+    </div>
+    @Html.HiddenFor(m => m.ShipperID)
     <div class="form-group">
         <label>Tên nhà vận chuyển:</label>
-        <input type="text" class="form-control" name="ShipperName" id="ShipperName" autofocus>
+        @Html.TextBoxFor(m => m.ShipperName, new { @class = "form-control", @autofocus = "autofocus" })
+        <div class="text-danger">@Html.ValidationMessageFor(m => m.ShipperName)</div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
                 <label>Điện thoại:</label>
-                <input type="text" class="form-control" name="Phone" id="Phone">
+                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @autofocus = "autofocus" })
+                <div class="text-danger">@Html.ValidationMessageFor(m => m.Phone)</div>
             </div>
         </div>
     </div>

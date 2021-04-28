@@ -23,6 +23,11 @@ namespace LiteCommerce.Admin
             string connectionString = ConfigurationManager
                 .ConnectionStrings["LiteCommerceDB"].ConnectionString;
             HRService.Init(DatabaseTypes.SQLServer, connectionString);
+            DataService.Init(DatabaseTypes.SQLServer, connectionString);
+            ProductService.Init(DatabaseTypes.SQLServer, connectionString);
+            ReportSercvice.Init(DatabaseTypes.SQLServer, connectionString);
+            SellService.Init(DatabaseTypes.SQLServer, connectionString);
+
         }
     }
 }

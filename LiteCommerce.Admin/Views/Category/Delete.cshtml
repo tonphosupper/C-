@@ -1,14 +1,14 @@
-﻿
-<form class="form-horizontal" method="post" action="~/Category/Delete/1234">
+﻿@model LiteCommerce.DomainModels.Category
+<form class="form-horizontal" method="post" action="~/Category/Delete/@Model.CategoryID">
     <div class="form-group">
         <label class="control-label col-sm-2">Tên loại hàng:</label>
         <div class="col-sm-10">
-            <p class="form-control-static">Nord-Ost-Fisch Handelsgesellschaft mbH</p>
+            <p class="form-control-static">@Model.CategoryName</p>
         </div>
 
         <label class="control-label col-sm-2">Mô tả:</label>
         <div class="col-sm-10">
-            <p class="form-control-static">Sven Petersen</p>
+            <p class="form-control-static">@Model.Description</p>
         </div>
     </div>
 

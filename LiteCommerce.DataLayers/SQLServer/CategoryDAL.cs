@@ -72,7 +72,7 @@ namespace LiteCommerce.DataLayers.SQLServer
             {
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"SELECT COUNT(*) FROM Categories
-                                    WHERE (@SearchValue = '')
+                                    WHERE (@searchValue = '')
                                        OR (
                                                 CategoryName LIKE @searchValue 
                                             OR  Description LIKE @searchValue 

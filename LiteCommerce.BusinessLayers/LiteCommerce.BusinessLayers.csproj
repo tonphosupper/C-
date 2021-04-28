@@ -42,8 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseTypes.cs" />
+    <Compile Include="DataService.cs" />
     <Compile Include="HRService.cs" />
+    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportSercvice.cs" />
+    <Compile Include="SellService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LiteCommerce.DataLayers\LiteCommerce.DataLayers.csproj">

@@ -43,20 +43,21 @@ namespace LiteCommerce.DataLayers
         /// </summary>
         /// <param name="supplierID">Mã nhân viên cần lấy thông tin</param>
         /// <returns></returns>
-        Employee Get(int supplierID);
+        Employee Get(int employeeID);
         /// <summary>
         /// Cập nhật thông tin cảu một nhân viên. Hàm trả về boolean cho biết
         /// việc cập nhật có thành công hay không
         /// </summary>
+        /// <param name="employeeID"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        bool Update(Employee data);
+        bool Update(int employeeID, Employee data);
         /// <summary>
         /// Xóa một nhân viên dựa vào mã. Hàm trả về boolean cho biết
         /// việc xóa có thành công hay không (Lưu ý: Không được xóa nhà cung cấp nếu đang có mặt hàng tham chiếu đến nhân viên
         /// </summary>
-        /// <param name="supplierID">Mã nhân viên cần xóa</param>
+        /// <param name="employeeID">Mã nhân viên cần xóa</param>
         /// <returns></returns>
-        bool Delete(int supplierID);
+        bool Delete(int employeeID);
     }
 }

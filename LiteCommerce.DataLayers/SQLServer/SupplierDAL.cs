@@ -67,7 +67,7 @@ namespace LiteCommerce.DataLayers.SQLServer
                 SqlCommand cmd = cn.CreateCommand();
                 cmd.CommandText = @"SELECT COUNT(*)
                                     FROM Suppliers
-                                    WHERE (@SearchValue = '')
+                                    WHERE (@searchValue = '')
                                        OR (
                                                 SupplierName LIKE @searchValue 
                                             OR  ContactName LIKE @searchValue 
@@ -212,9 +212,8 @@ namespace LiteCommerce.DataLayers.SQLServer
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public bool Update(Supplier data)
+        public bool Update(int supplierID, Supplier  data)
         {
-            int supplierID = 30;
             bool result = false;
             using (SqlConnection cn = GetConnection())
             {
