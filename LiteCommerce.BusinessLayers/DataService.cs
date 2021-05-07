@@ -150,14 +150,41 @@ namespace LiteCommerce.BusinessLayers
         {
             return SupplierDB.Add(data);
         }
-
+        /// <summary>
+        /// Thêm 1 loại hàng
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static int AddCategory(Category data)
         {
             return CategoryDB.Add(data);
         }
+        /// <summary>
+        /// Thêm 1 nhà vận chuyển
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static int AddShipper(Shipper data)
         {
             return ShipperDB.Add(data);
+        }
+        /// <summary>
+        /// Thêm 1 khách hàng
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static int AddCustomer(Customer data)
+        {
+            return CustomerDB.Add(data);
+        }
+        /// <summary>
+        /// Thêm 1 nhan vien
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static int AddEmployee(Employee data)
+        {
+            return EmployeeDB.Add(data);
         }
 
         //-----------------------------------------------END ADD----------------------------------------------------//
@@ -184,7 +211,7 @@ namespace LiteCommerce.BusinessLayers
             return CategoryDB.Update(categoryID, data);
         }
         /// <summary>
-        /// Cập nhật nhà cung cấp
+        /// Cập nhật nhà vận chuyển
         /// </summary>
         /// <param name="shipperID"></param>
         /// <param name="data"></param>
@@ -192,6 +219,26 @@ namespace LiteCommerce.BusinessLayers
         public static bool UpdateShipper(int shipperID, Shipper data)
         {
             return ShipperDB.Update(shipperID, data);
+        }
+        /// <summary>
+        /// Cập nhật Khách hàng
+        /// </summary>
+        /// <param name="custoemrID"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static bool UpdateCustomer(int customerID, Customer data)
+        {
+            return CustomerDB.Update(customerID, data);
+        }
+        /// <summary>
+        /// Cap nhat nhan vien
+        /// </summary>
+        /// <param name="employeeID"></param>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static bool UpdateEmployee(int employeeID, Employee data)
+        {
+            return EmployeeDB.Update(employeeID, data);
         }
 
         //----------------------------------------------END UPDATE--------------------------------------------------//
@@ -217,13 +264,31 @@ namespace LiteCommerce.BusinessLayers
             return CategoryDB.Delete(categoryID);
         }
         /// <summary>
-        /// Xóa nhà cung cấp theo mã
+        /// Xóa nhà vận chuyển theo mã
         /// </summary>
         /// <param name="shipperID"></param>
         /// <returns></returns>
         public static bool DeleteShipper(int shipperID)
         {
             return ShipperDB.Delete(shipperID);
+        }
+        /// <summary>
+        /// Xóa khách hàng
+        /// </summary>
+        /// <param name="shipperID"></param>
+        /// <returns></returns>
+        public static bool DeleteCustomer(int customerID)
+        {
+            return CustomerDB.Delete(customerID);
+        }
+        /// <summary>
+        /// Xoa nhan vien
+        /// </summary>
+        /// <param name="employeeID"></param>
+        /// <returns></returns>
+        public static bool DeleteEmployee(int employeeID)
+        {
+            return EmployeeDB.Delete(employeeID);
         }
 
         //----------------------------------------------END DELETE--------------------------------------------------//
@@ -249,15 +314,32 @@ namespace LiteCommerce.BusinessLayers
             return CategoryDB.Get(categoryID);
         }
         /// <summary>
-        /// Hiển thị nhà cung cấp theo mã
+        /// Hiển thị nhà vận chuyển theo mã
         /// </summary>
         /// <param name="shipperID"></param>
-        /// <returns></returns>
+        /// <returns></returns>s
         public static Shipper GetShipper(int shipperID)
         {
             return ShipperDB.Get(shipperID);
         }
-
+        /// <summary>
+        /// Hiển thị khách hàng theo mã
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns></returns>
+        public static Customer GetCustomer(int customerID)
+        {
+            return CustomerDB.Get(customerID);
+        }
+        /// <summary>
+        /// Hien thi nhan vien theo ma
+        /// </summary>
+        /// <param name="employeeID"></param>
+        /// <returns></returns>
+        public static Employee GetEmployee(int employeeID)
+        {
+            return EmployeeDB.Get(employeeID);
+        }
         //-----------------------------------------------END GET----------------------------------------------------//
     }
 }

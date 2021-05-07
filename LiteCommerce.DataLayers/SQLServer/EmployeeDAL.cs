@@ -205,7 +205,7 @@ namespace LiteCommerce.DataLayers.SQLServer
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = @"SELECT *
                     FROM( 
-                        SELECT * , ROW_NUMBER() OVER(ORDER BY EmployeeID) AS RowNumber 
+                        SELECT * , ROW_NUMBER() OVER(ORDER BY FirstName) AS RowNumber 
                         FROM Employees WHERE(@searchValue = '')
                             OR( FirstName LIKE @searchValue 
                             OR  LastName LIKE @searchValue 
@@ -245,8 +245,7 @@ namespace LiteCommerce.DataLayers.SQLServer
         }
 
         public bool Update(int employeeID, Employee data)
-        {
-            
+        {            
             bool result = false;
 
             using(SqlConnection cn = GetConnection())

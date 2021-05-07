@@ -25,6 +25,14 @@ namespace LiteCommerce.Admin.Controllers
 
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult Test()
+        {
+            return View();
+        }
+        public ActionResult Test1()
+        {
+            return View();
+        }
         public ActionResult PoniCity(string countryName)
         {
             string connectionString = ConfigurationManager

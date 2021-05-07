@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAccountDAL.cs" />
     <Compile Include="ICategoryDAL.cs" />
     <Compile Include="ICityDAL.cs" />
     <Compile Include="ICountryDAL.cs" />
@@ -52,7 +53,9 @@
     <Compile Include="SQLServer\CategoryDAL.cs" />
     <Compile Include="SQLServer\CityDAL.cs" />
     <Compile Include="SQLServer\CountryDAL.cs" />
+    <Compile Include="SQLServer\CustomerAccountDAL.cs" />
     <Compile Include="SQLServer\CustomerDAL.cs" />
+    <Compile Include="SQLServer\EmployeeAccountDAL.cs" />
     <Compile Include="SQLServer\EmployeeDAL.cs" />
     <Compile Include="SQLServer\ShipperDAL.cs" />
     <Compile Include="SQLServer\SupplierDAL.cs" />

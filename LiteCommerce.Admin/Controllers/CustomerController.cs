@@ -1,4 +1,5 @@
 ﻿using LiteCommerce.BusinessLayers;
+using LiteCommerce.DomainModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace LiteCommerce.Admin.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         // GET: Customer
@@ -31,10 +33,13 @@ namespace LiteCommerce.Admin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             ViewBag.Title = "Thay đổi thông tin khách hàng";
-            return View();
+            var model = DataService.GetCustomer(id);
+            if (model == null)
+                RedirectToAction("Index");
+            return View(model);
         }
         /// <summary>
         /// 
@@ -43,25 +48,80 @@ namespace LiteCommerce.Admin.Controllers
         public ActionResult Add()
         {
             ViewBag.Title = "Thêm thông tin khách hàng";
-            return View("Edit");
+            Customer model = new Customer()
+            {
+                CustomerID = 0
+            };
+
+            return View("Edit", model);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int id)
         {
             ViewBag.Title = "Xóa khách hàng";
-            return View();
+            if (Request.HttpMethod == "GET")
+            {
+                var model = DataService.GetCustomer(id);
+                if (model == null)
+                    RedirectToAction("Index");
+                return View(model);
+            }
+            else
+            {
+                DataService.DeleteCustomer(id);
+                return RedirectToAction("Index");
+            }
         }
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public ActionResult Save()
+        public ActionResult Save(Customer data)
         {
-            return RedirectToAction("Index");
+            try
+            {
+                if (string.IsNullOrWhiteSpace(data.CustomerName))
+                    ModelState.AddModelError("CustomerName", "Vui long nhap ten khach hang !");
+                if (string.IsNullOrWhiteSpace(data.ContactName))
+                    ModelState.AddModelError("ContactName", "Vui long nhap ten giao dich !");
+                if (string.IsNullOrWhiteSpace(data.Address))
+                    ModelState.AddModelError("Address", "Vui long nhap dia chi !");
+
+                if (string.IsNullOrEmpty(data.Country))
+                    data.Country = "";
+                if (string.IsNullOrEmpty(data.City))
+                    data.City = "";
+                if (string.IsNullOrEmpty(data.PostalCode))
+                    data.PostalCode = "";
+                if (string.IsNullOrEmpty(data.Email))
+                    data.Email = "";
+                if (string.IsNullOrEmpty(data.Password))
+                    data.Password = "";
+
+                if (!ModelState.IsValid)
+                {
+                    if (data.CustomerID == 0)
+                        ViewBag.Title = "Bo sung khach hang";
+                    else
+                        ViewBag.Title = "Thay doi thong tin khach hàng";
+                    return View("Edit", data);
+                }
+
+                if (data.CustomerID == 0)
+                    DataService.AddCustomer(data);
+                else
+                    DataService.UpdateCustomer(data.CustomerID, data);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("Oops! Trang nay khong ton tai :)");
+            }
         }
     }
 }

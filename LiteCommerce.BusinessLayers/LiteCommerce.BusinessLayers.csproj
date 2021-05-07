@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountService.cs" />
+    <Compile Include="AccountTypes.cs" />
     <Compile Include="DatabaseTypes.cs" />
     <Compile Include="DataService.cs" />
     <Compile Include="HRService.cs" />

@@ -1,13 +1,14 @@
-﻿
-<form class="form-horizontal" method="post" action="~/Shipper/Delete/1234">
+﻿@model LiteCommerce.DomainModels.Shipper
+
+<form class="form-horizontal" method="post" action="~/Shipper/Delete/@Model.ShipperID">
     <div class="form-group">
         <label class="control-label col-sm-2">Tên nhà vận chuyển:</label>
         <div class="col-sm-10">
-            <p class="form-control-static">Nord-Ost-Fisch Handelsgesellschaft mbH</p>
+            <p class="form-control-static">@Model.ShipperName</p>
         </div>
         <label class="control-label col-sm-2">Điện thoại:</label>
         <div class="col-sm-4">
-            <p class="form-control-static">(04721) 8713</p>
+            <p class="form-control-static">@Model.Phone</p>
         </div>
     </div>
 
