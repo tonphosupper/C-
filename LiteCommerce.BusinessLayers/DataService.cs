@@ -54,6 +54,14 @@ namespace LiteCommerce.BusinessLayers
         {
             return CountryDB.List();
         }
+        public static List<Category> ListCategories()
+        {
+            return CategoryDB.List();
+        }
+        public static List<Supplier> ListSuppliers()
+        {
+            return SupplierDB.List();
+        }
         /// <summary>
         /// Danh sách thành phố
         /// </summary>

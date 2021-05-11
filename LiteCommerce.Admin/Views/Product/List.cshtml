@@ -13,7 +13,11 @@
             <th>Đơn vị tính</th>
             <th>Giá hàng</th>
             <th>Ảnh minh họa</th>
-            <th></th>
+            <th class="text-right">
+                <a href="~/Product/Add" class="btn btn-xs btn-primary">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -53,7 +57,7 @@
             }
             else
             {
-                <li><a href="~/Product/Index">@i</a></li>
+                <li><a href="~/Product/List?category=0&supplier=0&searchValue=@Model.SearchValue&page=@i">@i</a></li>
             }
 
         }

@@ -1,4 +1,4 @@
-﻿
+﻿@model LiteCommerce.DomainModels.Product
 @{
     ViewBag.Title = "Quản lý danh mục hàng hóa";
 }
@@ -7,19 +7,19 @@
     <form id="formSearchInput">
         <div class="row">
             <div class="col-md-6">
-                <select name="category" class="form-control">
-                    <option value="0">-- Tất cả loại hàng --</option>
+                <select name="CategoryID" class="form-control">
+                    <option value="0">--Tat ca loai hang --</option>
                     <option value="1">Beverages</option>
                     <option value="2">Condiments</option>
                 </select>
 
             </div>
             <div class="col-md-6">
-                <select name="supplier" class="form-control">
-                    <option value="0">-- Tất cả nhà cung cấp --</option>
+                @*@Html.DropDownListFor(m => m.SupplierID, SelectListHelpers.Suppliers(), new { @class = "form-control" })*@
+                <select name="SupplierID" class="form-control">
+                    <option value="0">--Tat ca nha cung cap --</option>
                     <option value="1">Exotic Liquid</option>
                     <option value="2">New Orleans Cajun Delights</option>
-                    <option value="3">Grandma Kelly's Homestead </option>
                 </select>
             </div>
         </div>
